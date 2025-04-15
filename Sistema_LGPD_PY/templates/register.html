@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Registro{% endblock %}
+
+{% block content %}
+    <div class="auth-container">
+        <h2>Criar uma Conta</h2>
+        <form method="POST" action="{{ url_for('register') }}">
+            <div class="form-group">
+                <label for="username">Nome de Usuário:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="password" required minlength="8">
+            </div>
+            
+            <div class="form-group checkbox">
+                <input type="checkbox" id="lgpd_consent" name="lgpd_consent" required>
+                <label for="lgpd_consent">
+                    Eu concordo com a <a href="{{ url_for('privacy') }}" target="_blank">Política de Privacidade</a> 
+                    e tratamento dos meus dados pessoais de acordo com a LGPD.
+                </label>
+            </div>
+            
+            <button type="submit" class="btn">Registrar</button>
+        </form>
+        
+        <p>Já tem uma conta? <a href="{{ url_for('login') }}">Faça login</a></p>
+    </div>
+{% endblock %}
